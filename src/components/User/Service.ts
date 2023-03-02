@@ -1,6 +1,7 @@
 import {userInterface} from './utility'
 import {removeSensitiveData} from '../../schemas/decorators/user.decorator'
 import {createHash} from '../../validation/user.validate'
+import {responseType,responseStatus} from '../response'
 
 class User{
     users: userInterface[]  =[{
@@ -28,15 +29,34 @@ class User{
         return this.users
     }
 
+    findUserEmail(emil:string):responseType<string>{
+      for(let i =0;this.users.length > i; i++){
+        if(this.users[i].email === emil){
+            return {
+                status: responseStatus.Correct,
+                response: this.users[i].password
+            }
+        }
+      }
+      return {
+        status: responseStatus['Failed Process'],
+        response: 'El processo no pudo realizarse'
+      }
+    }
+
     @removeSensitiveData
-    findUser(id:number): userInterface | boolean | undefined {
+    findUser(id:number): responseType<userInterface | string>{
         for(let i=0;i < this.users.length;i++){
             if(this.users[i].id === id){
-                return this.users[i] 
+                return {
+                    status: responseStatus.Correct,
+                    response:this.users[i] 
+                }
             }
-            else{
-                return false 
-            }
+         }
+         return {
+            status: responseStatus['Not Founf'],
+            response: `Usuario con el id ${id} no encontrado`
          }
     }
     @removeSensitiveData
@@ -77,4 +97,4 @@ class User{
     }
 }
 
-export const user1 = new User()
+export const userService = new User()
