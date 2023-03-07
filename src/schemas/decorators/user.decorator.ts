@@ -1,8 +1,3 @@
-
-
-//decorador para encryptar password
-
-
 //decorador para transformar a fullName y a age
 export function removeSensitiveData(target:object,property:string,descriptor:PropertyDescriptor){
       const originalMethod = descriptor.value

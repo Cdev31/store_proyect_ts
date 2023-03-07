@@ -10,9 +10,10 @@ export interface userInterface{
   name: string;
   surname: string;
   password: string;
-  email: formatEmail
-  createAt: formatDate,
-  dateOfBirth: formatDate
+  email: formatEmail;
+  ownedStore: number;
+  createAt: formatDate;
+  dateOfBirth: formatDate;
 }
 
 

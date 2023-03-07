@@ -11,6 +11,7 @@ class User{
        password: "mySecret",
        email: "kalet.elsalvadorca@gmail.com",
        createAt: "23-Marzo-2020",
+       ownedStore:2,
        dateOfBirth: "22-Abril-2004"
     },
     {
@@ -20,6 +21,7 @@ class User{
         password: "mySecret",
         email: "Eliza@hotmail.com",
         createAt: "23-Enero-2020",
+        ownedStore:1,
         dateOfBirth: "22-Febrero-2004"
      }
 ] 
@@ -55,10 +57,24 @@ class User{
             }
          }
          return {
-            status: responseStatus['Not Founf'],
+            status: responseStatus['Not Found'],
             response: `Usuario con el id ${id} no encontrado`
          }
     }
+    ownedStoreUser(id:number):responseType<number>  | undefined{
+        for (let i =0;this.users.length> i;i++){
+            if(this.users[i].id == id){
+               return {
+                status: responseStatus.Correct,
+                response: this.users[i].ownedStore
+               }
+            }return {
+                    status: responseStatus['Not Found'],
+                    response: 'User Not Found'
+                   }
+        }
+    }
+
     @removeSensitiveData
     async createUser(body: Omit<userInterface,'id'>):Promise<userInterface>{
         const passHash = await createHash(body.password)    

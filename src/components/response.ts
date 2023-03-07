@@ -2,7 +2,7 @@
 //tipa el retorno de funciones de los servicios
 export enum responseStatus{
     'Correct',
-    'Not Founf',
+    'Not Found',
     'Updated',
     'Created',
     'Failed Process'

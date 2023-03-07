@@ -4,8 +4,8 @@ import {responseStatus} from '../response'
 import {validateHash} from '../../validation/user.validate'
 
 class networkUser{
-
-    static async login(password:string,email:formatEmail){
+    //metodo login para usuarios
+    public static async login(password:string,email:formatEmail){
           try {
             const {status,response}= userService.findUserEmail(email)
             if(status === responseStatus.Correct && typeof(response) === 'string'){
