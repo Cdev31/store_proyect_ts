@@ -5,7 +5,8 @@ export enum responseStatus{
     'Not Found',
     'Updated',
     'Created',
-    'Failed Process'
+    'Failed Process',
+    'Deleted'
 }
 
 export interface responseType<T>{
