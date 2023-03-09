@@ -5,6 +5,12 @@ export type formatEmail= `${string}@${'gmail' | 'hotmail' | 'outlook'}${'.com' |
 
 type formatDate = `${number}-${Month}-${number}`
 
+export enum ROLE {
+  Inventory_Manager,
+  Store_Manager,
+  Warehouse_manager
+}
+
 export interface userInterface{
   id: number;
   name: string;
@@ -12,6 +18,7 @@ export interface userInterface{
   password: string;
   email: formatEmail;
   ownedStore: number;
+  role: ROLE;
   createAt: formatDate;
   dateOfBirth: formatDate;
 }
